@@ -1,16 +1,13 @@
-package deck;
+package java.model.decks;
 
+import java.model.cardeffect.AddAmountEffect;
+import java.model.cardeffect.MoveToPositionEffect;
+import java.model.cardeffect.PayAmountEffect;
+import java.model.decks.cards.Card;
+import java.model.decks.cards.CommunityChestCard;
 import java.util.Collections;
 import java.util.Stack;
-
-import card.Card;
-import card.CommunityChestCard;
-
 import java.util.Random;
-
-import cardeffect.MoveToPositionEffect;
-import cardeffect.AddAmountEffect;
-import cardeffect.PayAmountEffect;
 
 //a list of Chance cards initialization 
 public class CommunityChestDeck implements Deck{

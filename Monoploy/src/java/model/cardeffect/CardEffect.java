@@ -1,6 +1,6 @@
-package cardeffect;
+package java.model.cardeffect;
 
-import player.Player;
+import java.model.player.Player;
 
 public interface CardEffect {
 	void execute(Player player);

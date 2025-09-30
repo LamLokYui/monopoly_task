@@ -1,6 +1,6 @@
-package card;
+package java.model.decks.cards;
 
-import cardeffect.CardEffect;
+import java.model.cardeffect.CardEffect;
 
 public class CommunityChestCard extends AbstractCard	{
 	public CommunityChestCard(String description, CardEffect effect) {

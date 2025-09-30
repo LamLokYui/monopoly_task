@@ -1,6 +1,6 @@
-package card;
+package java.model.decks.cards;
 
-import cardeffect.CardEffect;
+import java.model.cardeffect.CardEffect;
 
 public class ChanceCard extends AbstractCard	{
 	public ChanceCard(String description, CardEffect effect) {

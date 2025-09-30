@@ -1,6 +1,6 @@
-package card;
+package java.model.decks.cards;
 
-import player.Player;
+import java.model.player.Player;
 
 public interface Card {
 	void apply (Player player);

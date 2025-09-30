@@ -1,6 +1,6 @@
-package cardeffect;
+package java.model.cardeffect;
 
-import player.Player;
+import java.model.player.Player;
 
 //Payment Effect
 public class PayAmountEffect implements CardEffect{

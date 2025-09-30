@@ -1,4 +1,4 @@
-package board;
+package java.model.board;
 
 import java.util.ArrayList;
 import java.util.List;

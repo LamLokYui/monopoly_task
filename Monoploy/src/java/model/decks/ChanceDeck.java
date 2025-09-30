@@ -1,15 +1,12 @@
-package deck;
+package java.model.decks;
 
+import java.model.cardeffect.AddAmountEffect;
+import java.model.cardeffect.MoveToPositionEffect;
+import java.model.decks.cards.Card;
+import java.model.decks.cards.ChanceCard;
 import java.util.Collections;
 import java.util.Stack;
-
-import card.Card;
-import card.ChanceCard;
-
 import java.util.Random;
-
-import cardeffect.MoveToPositionEffect;
-import cardeffect.AddAmountEffect;
 
 //a list of Chance cards initialization 
 public class ChanceDeck implements Deck{

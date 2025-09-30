@@ -1,6 +1,6 @@
-package cardeffect;
+package java.model.cardeffect;
 
-import player.Player;
+import java.model.player.Player;
 
 //Movement Effect
 public class MoveToPositionEffect implements CardEffect{

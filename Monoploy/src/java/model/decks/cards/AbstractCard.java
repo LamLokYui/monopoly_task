@@ -1,7 +1,7 @@
-package card;
+package java.model.decks.cards;
 
-import cardeffect.CardEffect;
-import player.Player;
+import java.model.cardeffect.CardEffect;
+import java.model.player.Player;
 
 //set up each card's info and effects
 public abstract class AbstractCard implements Card{
@@ -14,7 +14,7 @@ public abstract class AbstractCard implements Card{
 	}
 	
 	@Override
-	public void apply (Player player) {
+	public void apply(Player player) {
 		System.out.println(description);
 		effect.execute(player);
 	}
