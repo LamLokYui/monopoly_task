@@ -2,6 +2,7 @@ package cardeffect;
 
 import player.Player;
 
+//Earned Effect
 public class AddAmountEffect implements CardEffect{
 	private int amount;
 	

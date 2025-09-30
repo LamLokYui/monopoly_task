@@ -2,6 +2,7 @@ package cardeffect;
 
 import player.Player;
 
+//Payment Effect
 public class PayAmountEffect implements CardEffect{
 	private int amount;
 	

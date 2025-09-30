@@ -11,6 +11,7 @@ import java.util.Random;
 import cardeffect.MoveToPositionEffect;
 import cardeffect.AddAmountEffect;
 
+//a list of Chance cards initialization 
 public class ChanceDeck implements Deck{
 	private static ChanceDeck instance;
 	private Stack<Card> cards = new Stack<>();

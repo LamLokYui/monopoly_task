@@ -3,6 +3,7 @@ package card;
 import cardeffect.CardEffect;
 import player.Player;
 
+//set up each card's info and effects
 public abstract class AbstractCard implements Card{
 	private String description;
 	private CardEffect effect;

@@ -12,6 +12,7 @@ import cardeffect.MoveToPositionEffect;
 import cardeffect.AddAmountEffect;
 import cardeffect.PayAmountEffect;
 
+//a list of Chance cards initialization 
 public class CommunityChestDeck implements Deck{
 	private static CommunityChestDeck instance;
 	private Random seed = new Random(42);

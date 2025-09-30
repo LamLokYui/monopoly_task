@@ -2,6 +2,7 @@ package cardeffect;
 
 import player.Player;
 
+//Movement Effect
 public class MoveToPositionEffect implements CardEffect{
 	private int position;
 	

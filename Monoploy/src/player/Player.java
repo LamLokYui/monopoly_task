@@ -3,10 +3,12 @@ package player;
 import java.util.ArrayList;
 import java.util.List;
 
+//Player info initialize
 public class Player{
 	private String name;
 	private int pos;
 	private int capital = 1500;
+	//store all properties for player that bought
 	private List<Property> ownedProperty = new ArrayList<>();
 	private boolean Jail = false;
 	
