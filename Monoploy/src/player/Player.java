@@ -22,10 +22,22 @@ public class Player{
 		}
 	}
 	
-	public void pay(int amount) {
+	public int pay(int amount) {
 		capital -= amount;
 		if (capital < 0) {
 			System.out.printf("%s lose becuase of going bankruptcy", name);
+			return 0;
 		}
+		return capital;
+	}
+	
+	public int earn(int amount) {
+		capital += amount;
+		return capital;
+	}
+	
+	@Override
+	public String toString() {
+		return name + " ";
 	}
 }

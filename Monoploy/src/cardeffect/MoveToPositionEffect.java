@@ -12,5 +12,6 @@ public class MoveToPositionEffect implements CardEffect{
 	@Override
 	public void execute(Player player) {
 		player.move(position);
+		System.out.println(player + " moved to position" + position);
 	}
 }
