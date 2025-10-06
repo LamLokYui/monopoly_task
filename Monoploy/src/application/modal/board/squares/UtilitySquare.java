@@ -36,8 +36,8 @@ public class UtilitySquare extends Squares implements Own{
 	}
 	
 	@Override
-	public int getRent() throws Exception {
-		throw new Exception("Method is not supporting");
+	public int getRent() {
+		return 0;
 	}
 	
 	public int getRent(Dice dice) {

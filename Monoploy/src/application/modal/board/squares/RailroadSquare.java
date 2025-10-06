@@ -25,7 +25,9 @@ public class RailroadSquare extends Squares implements Own{
 	
 	@Override
 	public int getRent() {
-		return rent;
+		if (owner == null) return 0;
+		
+		return calculateRent(owner.getNumofOwnedRail());
 	}
 	
 	@Override

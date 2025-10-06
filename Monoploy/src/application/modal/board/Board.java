@@ -4,14 +4,16 @@ import application.modal.board.squares.*;
 import application.modal.decks.ChanceDeck;
 import application.modal.decks.CommunityChestDeck;
 import application.modal.decks.cards.*;
+import application.modal.player.Player;
 
+//initialize info of board
 public class Board {
-	private Board instance;
+	private static Board instance;
     private final Squares[] boardSquares;
     private final ChanceDeck chanceDeck;
     private final CommunityChestDeck communityChestDeck;
     
-    public Board getInstance() {
+    public static Board getInstance() {
     	if (instance == null)
     		return new Board();
     	return instance;
@@ -21,9 +23,6 @@ public class Board {
         boardSquares = createBoard();
         chanceDeck = new ChanceDeck();
         communityChestDeck = new CommunityChestDeck();
-
-        chanceDeck.shuffle();
-        communityChestDeck.shuffle();
     }
 
     private Squares[] createBoard() {
@@ -74,6 +73,10 @@ public class Board {
     public Squares[] getBoardSquares() {
         return boardSquares;
     }
+    
+    public Squares getSquare(int position) {
+    	return boardSquares[position % 40];
+    }
 
     public ChanceDeck getChanceDeck() {
         return chanceDeck;
@@ -83,16 +86,16 @@ public class Board {
         return communityChestDeck;
     }
 
-
-    public Squares getNearestSquareOfType(int startPosition, String className) {
-        int max = boardSquares.length;
-        for (int i = startPosition; i < (max + startPosition - 1); i++) {
-            try {
-                if (Class.forName(className).isInstance(boardSquares[i % max])) return boardSquares[i % max];
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+    public void landOnSquare(Player player, int position) {
+        Squares square = getSquare(position);
+        if (square instanceof GoSquare) {
+            ((GoSquare) square).awardCapital(player);
+        } else if (square instanceof GoToJailSquare) {
+            ((GoToJailSquare) square).sendToJail(player);
+        } else if (square instanceof CardSquare) {
+        } else if (square instanceof Own ownSquare && ownSquare.getOwned() && ownSquare.getOwner() != player) {
+            player.changeOfCapital(-ownSquare.getRent());
+            ownSquare.getOwner().changeOfCapital(ownSquare.getRent());
         }
-        return null;
     }
 }

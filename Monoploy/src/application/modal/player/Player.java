@@ -14,7 +14,7 @@ public class Player{
 	private int capital;
 	private List<PropertySquares> ownedProperty;
 	private List<Own> ownedSquares;
-	private boolean Jail;
+	private boolean isJail;
 	private boolean isBankrupt;
 	
 	public Player(String name) {
@@ -23,7 +23,7 @@ public class Player{
 		this.capital = 1500;
 		this.ownedSquares =new ArrayList<>();
 		this.ownedProperty = new ArrayList<>();
-		this.Jail = false;
+		this.isJail = false;
 		this.isBankrupt = false;
 	}
 	
@@ -37,6 +37,10 @@ public class Player{
 	
 	public void setBankrupt(boolean bankrupt) {
 		isBankrupt = bankrupt;
+	}
+	
+	public void setJail(boolean jail) {
+		isJail = jail;
 	}
 	
 	public int changeOfCapital(int amount) {
@@ -82,6 +86,17 @@ public class Player{
 	public void addProperty(PropertySquares property) {
 		ownedProperty.add(property);
     }
+	
+	public int getNumofOwnedRail() {
+		int numOfOwnedRails = 0;
+		
+		for	(Own owned: ownedSquares) {
+			if (owned instanceof RailroadSquare) {
+				numOfOwnedRails++;
+			}
+		}
+		return numOfOwnedRails;
+	}
 	
 	public int getNumOfOwnedUtilities() {
 		int numOfOwnedUtilities = 0;
