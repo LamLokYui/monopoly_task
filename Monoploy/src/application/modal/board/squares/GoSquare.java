@@ -12,6 +12,6 @@ public class GoSquare extends Squares {
     }
     
     public void awardCapital(Player player) {
-    	player.changeOfCapital(capital);
+    	player.addMoney(capital);
     }
 }

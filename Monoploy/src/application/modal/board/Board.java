@@ -1,28 +1,26 @@
 package application.modal.board;
 
 import application.modal.board.squares.*;
-import application.modal.decks.ChanceDeck;
-import application.modal.decks.CommunityChestDeck;
-import application.modal.decks.cards.*;
+import application.modal.decks.Deck;
+import application.modal.decks.DeckImpl;
 import application.modal.player.Player;
 
-//initialize info of board
 public class Board {
-	private static Board instance;
+    private static Board instance;
     private final Squares[] boardSquares;
-    private final ChanceDeck chanceDeck;
-    private final CommunityChestDeck communityChestDeck;
-    
+    private final Deck chanceDeck;
+    private final Deck communityChestDeck;
+
     public static Board getInstance() {
-    	if (instance == null)
-    		return new Board();
-    	return instance;
+        if (instance == null)
+            instance = new Board();
+        return instance;
     }
-    
-    public Board() {
+
+    private Board() {
         boardSquares = createBoard();
-        chanceDeck = new ChanceDeck();
-        communityChestDeck = new CommunityChestDeck();
+        chanceDeck = DeckImpl.getChanceInstance();
+        communityChestDeck = DeckImpl.getCommunityChestInstance();
     }
 
     private Squares[] createBoard() {
@@ -73,16 +71,16 @@ public class Board {
     public Squares[] getBoardSquares() {
         return boardSquares;
     }
-    
+
     public Squares getSquare(int position) {
-    	return boardSquares[position % 40];
+        return boardSquares[position % 40];
     }
 
-    public ChanceDeck getChanceDeck() {
+    public Deck getChanceDeck() {
         return chanceDeck;
     }
 
-    public CommunityChestDeck getCommunityChestDeck() {
+    public Deck getCommunityChestDeck() {
         return communityChestDeck;
     }
 
@@ -93,9 +91,12 @@ public class Board {
         } else if (square instanceof GoToJailSquare) {
             ((GoToJailSquare) square).sendToJail(player);
         } else if (square instanceof CardSquare) {
-        } else if (square instanceof Own ownSquare && ownSquare.getOwned() && ownSquare.getOwner() != player) {
-            player.changeOfCapital(-ownSquare.getRent());
-            ownSquare.getOwner().changeOfCapital(ownSquare.getRent());
+            CardSquare cardSquare = (CardSquare) square;
+            Deck deck = cardSquare.getName().equals("Chance") ? chanceDeck : communityChestDeck;
+            deck.draw().apply(player);
+        } else if (square instanceof OwnableSquare ownableSquare && ownableSquare.getOwned() && ownableSquare.getOwner() != player) {
+            player.addMoney(-ownableSquare.getRent());
+            ownableSquare.getOwner().addMoney(ownableSquare.getRent());
         }
     }
 }

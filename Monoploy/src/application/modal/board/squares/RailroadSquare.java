@@ -2,7 +2,7 @@ package application.modal.board.squares;
 
 import application.modal.player.Player;
 
-public class RailroadSquare extends Squares implements Own{
+public class RailroadSquare extends Squares implements OwnableSquare{
 	private final int rent;
 	private Player owner;
 	private final int purchasePrice;
@@ -27,7 +27,7 @@ public class RailroadSquare extends Squares implements Own{
 	public int getRent() {
 		if (owner == null) return 0;
 		
-		return calculateRent(owner.getNumofOwnedRail());
+		return calculateRent(owner.getNumOfOwnedRails());
 	}
 	
 	@Override

@@ -4,7 +4,7 @@ import application.modal.dice.Dice;
 import application.modal.player.Player;
 
 
-public class UtilitySquare extends Squares implements Own{
+public class UtilitySquare extends Squares implements OwnableSquare{
 	private final int purchasePrice;
 	private Player owner;
 	
@@ -43,9 +43,9 @@ public class UtilitySquare extends Squares implements Own{
 	public int getRent(Dice dice) {
 		dice.roll();
 		if (owner.getNumOfOwnedUtilities() > 1) {
-			return 10 * dice.getDieRollTotal();
+			return 10 * dice.getTotal();
 		}
-		return 4* dice.getDieRollTotal();
+		return 4* dice.getTotal();
 	}
 	
 }
