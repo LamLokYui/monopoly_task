@@ -10,9 +10,6 @@ public class PayAmountEffect implements CardEffect {
     private final int amount;
 
     public PayAmountEffect(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount must be non-negative for payment");
-        }
         this.amount = amount;
     }
 

@@ -14,7 +14,7 @@ public class Board {
     public static Board getInstance() {
         if (instance == null)
             instance = new Board();
-        return instance;
+        return instance; 
     }
 
     private Board() {
@@ -23,6 +23,12 @@ public class Board {
         communityChestDeck = DeckImpl.getCommunityChestInstance();
     }
 
+    protected Board(Squares[] squares) {
+        this.boardSquares = squares;
+		this.chanceDeck = null;
+		this.communityChestDeck = null;
+    }
+    
     private Squares[] createBoard() {
         return new Squares[]{
             new GoSquare(0, 200),

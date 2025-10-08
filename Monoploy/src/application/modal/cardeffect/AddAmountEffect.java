@@ -10,9 +10,6 @@ public class AddAmountEffect implements CardEffect {
     private final int amount;
 
     public AddAmountEffect(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount must be non-negative for addition");
-        }
         this.amount = amount;
     }
 

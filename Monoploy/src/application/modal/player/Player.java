@@ -31,6 +31,7 @@ public class Player {
         }
         int newPosition = (position + steps) % 40;
         if (newPosition < position) {
+        	System.out.println("Passed Go");
             addMoney(200); // Pass Go
         }
         position = newPosition;
@@ -48,17 +49,17 @@ public class Player {
             throw new IllegalStateException("Cannot modify money for a bankrupt player");
         }
         int newCapital = capital + amount;
+        System.out.println(amount + " " +  newCapital);
         if (newCapital < 0) {
-            int moneyNeeded = -newCapital;
+            int moneyNeeded = newCapital;
             autoSellProperties(moneyNeeded);
             newCapital = capital;
         }
         if (newCapital < 0) {
             capital = 0;
             isBankrupt = true;
-        } else {
-            capital = newCapital;
         }
+        capital = newCapital;
         return capital;
     }
 
@@ -79,15 +80,13 @@ public class Player {
             sellOwnedSquare(square);
             capitalReceived += square.getPurchasePrice();
         }
-        if (capitalReceived < capitalRequired) {
+        capital = capitalRequired + capitalReceived;
+        if (capital <= 0) {
             isBankrupt = true;
         }
     }
-
+ 
     public void addProperty(OwnableSquare square) {
-        if (isBankrupt) {
-            throw new IllegalStateException("Bankrupt player cannot acquire properties");
-        }
         ownedSquares.add(square);
         square.setOwner(this);
     }
@@ -103,13 +102,22 @@ public class Player {
                 .filter(sq -> sq instanceof UtilitySquare)
                 .count();
     }
-
+    
+    public void removeAllPropty() {
+    	ownedSquares.removeAll(ownedSquares);
+    }
+    
     public void setJail(boolean jail) {
         isJail = jail;
     }
 
     public void setBankrupt(boolean bankrupt) {
         isBankrupt = bankrupt;
+    }
+    
+    public int setCapital(int cap) {
+    	this.capital = cap;
+    	return capital;
     }
 
     // Getters

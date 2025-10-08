@@ -13,13 +13,13 @@ public class UtilitySquare extends Squares implements OwnableSquare{
 		this.purchasePrice = 150;
 		this.owner = null;
 	}
-	
+	 
 	@Override
 	public int getPurchasePrice() {
 		return purchasePrice;
 	}
 	
-	
+
 	@Override 
 	public boolean getOwned() {
 		return owner != null;

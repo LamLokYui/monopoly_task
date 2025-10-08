@@ -10,9 +10,6 @@ public class MoveToPositionEffect implements CardEffect {
     private final int position;
 
     public MoveToPositionEffect(int position) {
-        if (position < 0 || position >= 40) {
-            throw new IllegalArgumentException("Position must be between 0 and 39");
-        }
         this.position = position;
     }
 

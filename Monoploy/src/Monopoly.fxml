@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="618.0" prefWidth="870.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="application.MonopolyController">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="1920.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="application.controller.MonopolyController">
    <children>
       <AnchorPane layoutX="-51.0" layoutY="-136.0" prefHeight="200.0" prefWidth="200.0" />
       <Label layoutX="90.0" layoutY="72.0" prefHeight="42.0" prefWidth="139.0" text="Hello World">
