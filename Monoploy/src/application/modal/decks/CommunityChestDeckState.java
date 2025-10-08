@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Stack;
 
-public class CommunityChestDeck implements DeckBehavior {
+public class CommunityChestDeckState implements DeckState {
     private Random seed = new Random(42);
 
     @Override

@@ -2,10 +2,6 @@ package cardeffecttest;
 
 import application.modal.board.Board;
 import application.modal.board.squares.OwnableSquare;
-import application.modal.board.squares.RailroadSquare;
-import application.modal.board.squares.Squares;
-import application.modal.board.squares.UtilitySquare;
-import application.modal.dice.Dice;
 import application.modal.player.Player;
 import application.modal.cardeffect.*;
 
@@ -129,7 +125,6 @@ public class CardEffectTest {
     	Player player1 = new Player("TestPlayer1");
     	player1.setPosition(29);
         MoveToNearestUtilityEffect effect = new MoveToNearestUtilityEffect();
-        System.out.println(player1.getNumOfOwnedUtilities());
         effect.execute(player1);
         assertEquals(12, player1.getPosition(), "Should move to Electric Company (12)");
         assertEquals(1700, player1.getCapital(), "Should collect $200 for passing Go");

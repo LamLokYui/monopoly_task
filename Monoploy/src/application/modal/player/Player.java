@@ -31,7 +31,6 @@ public class Player {
         }
         int newPosition = (position + steps) % 40;
         if (newPosition < position) {
-        	System.out.println("Passed Go");
             addMoney(200); // Pass Go
         }
         position = newPosition;
@@ -49,7 +48,6 @@ public class Player {
             throw new IllegalStateException("Cannot modify money for a bankrupt player");
         }
         int newCapital = capital + amount;
-        System.out.println(amount + " " +  newCapital);
         if (newCapital < 0) {
             int moneyNeeded = newCapital;
             autoSellProperties(moneyNeeded);

@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Stack;
 
 //a list of Chance cards initialization 
-public class ChanceDeck implements DeckBehavior {
+public class ChanceDeckState implements DeckState {
     private Random seed = new Random(42);
 
     @Override

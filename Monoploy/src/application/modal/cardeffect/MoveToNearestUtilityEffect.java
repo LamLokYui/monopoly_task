@@ -26,7 +26,6 @@ public class MoveToNearestUtilityEffect implements CardEffect {
             newPos = (newPos + 1) % 40;
         }
         int steps = (newPos - current + 40) % 40;
-        System.out.println("Steps:"+ steps + " ");
         player.move(steps); 
         
         OwnableSquare sq = (OwnableSquare) board.getSquare(newPos);
