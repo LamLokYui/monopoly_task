@@ -1,6 +1,7 @@
 package cardeffecttest;
 
 import application.modal.board.Board;
+import application.modal.dice.Dice;
 import application.modal.board.squares.OwnableSquare;
 import application.modal.player.Player;
 import application.modal.cardeffect.*;
@@ -103,6 +104,13 @@ public class CardEffectTest {
     }
     
     
+    class StubDice extends Dice {
+		@Override
+		public int roll() {
+			return 7;
+		}
+	}
+    	
     @Test
     void testMoveToNearestUtilityOwned() {
     	Player player1 = new Player("TestPlayer1");
@@ -111,7 +119,8 @@ public class CardEffectTest {
         OwnableSquare utility = (OwnableSquare) board.getSquare(12);
         utility.setOwner(player2);
         player2.addProperty(utility);
-        MoveToNearestUtilityEffect effect = new MoveToNearestUtilityEffect();
+        StubDice stubDice = new StubDice();
+        MoveToNearestUtilityEffect effect = new MoveToNearestUtilityEffect(stubDice);
         effect.execute(player1);
         assertEquals(12, player1.getPosition(), "Should move to Electric Company (12)");
         player2.removeAllPropty();

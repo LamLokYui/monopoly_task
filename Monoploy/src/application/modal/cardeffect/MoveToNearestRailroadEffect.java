@@ -36,6 +36,5 @@ public class MoveToNearestRailroadEffect implements CardEffect {
                 owner.addMoney(rent);
             }
         }
-       
     }
 }

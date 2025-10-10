@@ -12,14 +12,14 @@ public class Dice {
     private int die1;
     private int die2;
 
-    public Dice() {
-        this.random = new Random();
-    }
+    public Dice(Random random) {
+    	this.random = random;
+	}
     
-    public Dice(long seed) {
-        this.random = new Random(seed);
-    }
-
+    public Dice() {
+		this(new Random());
+	}
+    
 
     public int roll() {
         die1 = random.nextInt(6) + 1;

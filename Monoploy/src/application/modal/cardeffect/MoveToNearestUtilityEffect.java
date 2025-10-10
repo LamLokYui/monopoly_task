@@ -6,6 +6,8 @@ import application.modal.board.squares.UtilitySquare;
 import application.modal.player.Player;
 import application.modal.dice.*;
 
+import java.util.Random;
+
 /**
  * Concrete strategy for advancing to the nearest utility and handling special rent if owned.
  * Moves the player forward to the next utility position.
@@ -13,7 +15,18 @@ import application.modal.dice.*;
  * If unowned, normal buying logic applies via game turn.
  */
 public class MoveToNearestUtilityEffect implements CardEffect {
+	private static final Random seed = new Random();
+	private final Dice dice;
 
+	public MoveToNearestUtilityEffect() {
+		this.dice = new Dice(seed);
+	}
+
+	// Constructor for injecting a Dice instance (useful for tests)
+	public MoveToNearestUtilityEffect(Dice dice) {
+		this.dice = dice;
+	}
+	
     @Override
     public void execute(Player player) {
         int current = player.getPosition();
@@ -29,15 +42,27 @@ public class MoveToNearestUtilityEffect implements CardEffect {
         player.move(steps); 
         
         OwnableSquare sq = (OwnableSquare) board.getSquare(newPos);
-        if (sq.getOwned()) {
+        int rent = Payrent(sq, player);
+        if (rent > 0) {
+			player.addMoney(-rent);
+			sq.getOwner().addMoney(rent);
+		}
+    }
+    
+    public int Payrent(OwnableSquare sq, Player player) {
+    	int rent = 0;
+    	if (sq.getOwned()) {
             Player owner = sq.getOwner();
             if (owner != player) {
-                Dice dice = new Dice();
-                int roll = dice.roll();
-                int rent = 10 * roll;
-                player.addMoney(-rent);
-                owner.addMoney(rent);
+                rent = getRent(rent);
             }
         }
+		return rent;
+    }
+    
+    public int getRent(int rent) {
+         int roll = dice.roll();
+         rent = 10 * roll;
+         return rent;
     }
 }
